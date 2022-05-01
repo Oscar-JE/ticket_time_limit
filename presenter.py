@@ -1,6 +1,6 @@
 # main class presenter
 
-from basicModel import Basic as Model
+from basicModel import Model
 from terminalView import View
 
 class Presenter():

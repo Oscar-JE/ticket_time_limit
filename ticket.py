@@ -6,6 +6,9 @@ class Ticket(object):
     def __init__(self):
         self._buisinesValue = random.randrange(-10,10)
 
+    def __str__():
+        return str(self._buisinesValue)
+
     def value(self):
         return _buisinesValue
 

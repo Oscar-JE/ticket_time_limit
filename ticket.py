@@ -17,7 +17,7 @@ class Ticket(object):
 
     # need the ability to compare tickets
     def __le__(self,otherTicket):
-        return self._buisinesValue<= otherTicket._buisinesValue
+        return self._buisinesValue <= otherTicket._buisinesValue
 
     def __gt__(self,ottherTicket):
         return self._buisinesValue > otherTicket._buisinesValue

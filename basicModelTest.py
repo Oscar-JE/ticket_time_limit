@@ -17,6 +17,9 @@ class TestBasicModel(unittest.TestCase):
         myModel = Model()
         myModel.inputTickets(tickets)
         print(myModel)
+        print("En mer invasiv undersökning")
+        print(len(myModel._tickets))
+        print(len(myModel._ticketIndexs))
 
     def testToString(self):
         myModel = Model()

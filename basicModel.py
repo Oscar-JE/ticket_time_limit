@@ -14,7 +14,7 @@ class Model(object):
 
     def __str__(self):
         ticketsRep = "Tickets:" + str(self._tickets)
-        orderRep = "Order:" + self._ticketIndexs
+        orderRep = "Order:" + str(self._ticketIndexs)
         return ticketsRep + "\n" + orderRep +"\n"
 
     def _generateNumberOfTicketsNextSprint(self):
@@ -31,10 +31,14 @@ class Model(object):
         # start with stupid implementaton
         # assume already ordered lists (emplty list is regarded as sorted)
         self._tickets.append(ticket)
-        for index in _ticketIndexs:
+        for index in self._ticketIndexs:
             if ticket <= self._tickets[index]:
                 self._ticketIndexs.insert(len(self._tickets),index)
                 break
+
+    def inputTickets(self, tickets):
+        for ticket in tickets:
+            self._inputTicket(ticket)
 
     def calc(self):
         return 5

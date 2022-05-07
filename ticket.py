@@ -6,7 +6,7 @@ class Ticket(object):
     def __init__(self):
         self._buisinesValue = random.randrange(-10,10)
 
-    def __str__():
+    def __str__(self):
         return str(self._buisinesValue)
 
     def value(self):
@@ -19,5 +19,5 @@ class Ticket(object):
     def __le__(self,otherTicket):
         return self._buisinesValue <= otherTicket._buisinesValue
 
-    def __gt__(self,ottherTicket):
+    def __gt__(self,otherTicket):
         return self._buisinesValue > otherTicket._buisinesValue

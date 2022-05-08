@@ -9,15 +9,15 @@ class Model(object):
 
     def __init__(self):
         self._tickets = []
-        self._ticketIndexs = [] # order of the tickets according to
-                                # their buisinesValue
+        self._ticketIndex = [] # order of the tickets according to
+                                # their buisinesValue from lowest to highest
 
     def __str__(self):
         ticketsRep = "Tickets: "
         orderRep = "Order: "
         for ticket in self._tickets:
             ticketsRep += str(ticket) + " "
-        for index in self._ticketIndexs:
+        for index in self._ticketIndex:
             orderRep += str(index) + " "
         return ticketsRep + "\n" + orderRep +"\n"
 
@@ -31,16 +31,27 @@ class Model(object):
             tickets.append(Ticket())
         return tickets
 
-    # dela upp i mindre delar
+    def _incrementIndexesAbove(self,index):
+        for  i , indexIt in enumerate(self._ticketIndex):
+            if indexIt >= index:
+                self._ticketIndex[i] += 1
+
+    def _findIndexOfTicket(self,ticket):
+        nr_of_tickets_smaler = 0
+        for index in self._ticketIndex:
+            if self._tickets[index] > ticket : # controlls the order
+                break
+            else:
+                nr_of_tickets_smaler+=1
+        return nr_of_tickets_smaler
+
+    def _inputOrder(self,ticket):
+        index = self._findIndexOfTicket(ticket)
+        self._incrementIndexesAbove(index)
+        self._ticketIndex.insert(len(self._ticketIndex) ,index)
+
     def _inputTicket(self,ticket):
-        # start with stupid implementaton
-        # assume already ordered lists (emplty list is regarded as sorted)
-        for index in self._ticketIndexs:
-            if ticket <= self._tickets[index]:
-                self._ticketIndexs.insert(len(self._tickets),index)
-                self._tickets.append(ticket)
-                return
-        self._ticketIndexs.append(len(self._tickets))
+        self._inputOrder(ticket)
         self._tickets.append(ticket)
 
     def inputTickets(self, tickets):

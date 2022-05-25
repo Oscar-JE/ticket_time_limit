@@ -10,8 +10,13 @@ def testForLoopOfIndexList():
         print("index = " + str(index))
         print(birbs[index])
 
+def testEqualityBetweenLists():
+    l1 = [1,2,3]
+    l2 = [1,2,4]
+    print(l1==l2)
+
 def main():
-    testListStringConversion()
+    testEqualityBetweenLists()
 
 
 

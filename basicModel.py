@@ -2,15 +2,33 @@
 from ticket import Ticket
 import random
 
+def ticketWithValue(value):
+    retTicket = Ticket()
+    retTicket._buisinesValue= value
+    return retTicket
+
+
+def ticketsCreate(values):
+    tickets = []
+    for value in values:
+        tickets.append(ticketWithValue(value))
+    return tickets
+
+
 class Model(object):
     """docstring forBasic."""
     maximumSprintTickets = 15
     teamsTicketCapacity = 6
 
-    def __init__(self):
+    def __init__(self,values = []):
+        tickets = ticketsCreate(values)
         self._tickets = []
         self._ticketIndex = [] # order of the tickets according to
                                 # their buisinesValue from lowest to highest
+        self.inputTickets(tickets)
+
+    def getOrdering(self): # kommer endast användas för test .Detta är väl dåligt
+        return self._ticketIndex
 
     def __str__(self):
         ticketsRep = "Tickets: "
@@ -57,6 +75,22 @@ class Model(object):
     def inputTickets(self, tickets):
         for ticket in tickets:
             self._inputTicket(ticket)
+
+    def indexOfLargestTicket(self):
+        # dependent on the order of indexes
+        return self._ticketIndex[-1]
+
+    def popTicket(self,index):
+        # släng ut ticket och uppdater index listan
+        ticket = self._tickets.pop(index)
+
+        # uppdatera index listan
+        # tag bort index som relaterar till det elementet som togs bort
+        #self._ticketIndex.del(index)
+        # index mindre än det angivna är oförändrade
+        # mappning som object kanske skulle göra saken lättare
+
+        return ticket
 
     def calc(self):
         return 5

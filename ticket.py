@@ -3,9 +3,12 @@ import random
 
 class Ticket(object):
     """ main data class """
-    def __init__(self):
-        self._buisinesValue = random.randrange(-10,10)
-
+    def __init__(self,buisinesValue=None):
+        if buisinesValue is None:
+            self._buisinesValue = random.randrange(-10,10)
+        else:
+            self._buisinesValue = buisinesValue
+            
     def __str__(self):
         return str(self._buisinesValue)
 

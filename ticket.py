@@ -1,6 +1,19 @@
 import time
 import random
 
+def ticketWithValue(value):
+    retTicket = Ticket()
+    retTicket._buisinesValue= value
+    return retTicket
+
+
+def ticketsCreate(values):
+    tickets = []
+    for value in values:
+        tickets.append(ticketWithValue(value))
+    return tickets
+
+
 class Ticket(object):
     """ main data class """
     def __init__(self,buisinesValue=None):
@@ -8,7 +21,7 @@ class Ticket(object):
             self._buisinesValue = random.randrange(-10,10)
         else:
             self._buisinesValue = buisinesValue
-            
+
     def __str__(self):
         return str(self._buisinesValue)
 

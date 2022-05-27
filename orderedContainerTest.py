@@ -4,7 +4,6 @@ from orderedContainer import OrderedContainer
 
 class TestBasicModel(unittest.TestCase):
 
-    #@unittest.skip("Ska skrivas om så att utskrifter inte sker")
     def testInputIndex(self):
         values = [3,-1]
         myContainer = OrderedContainer(values)
@@ -14,15 +13,21 @@ class TestBasicModel(unittest.TestCase):
     def testInputOrder(self):
         values = [1,0,-3]
         myContainer = OrderedContainer(values)
-        self.assertEqual(myModel.getOrdering(), [2,1,0])
+        self.assertEqual(myContainer._order, [2,1,0])
 
     def testInputTickets(self):
         values = [3,2,10,9]
         myContainer = OrderedContainer(values)
-        self.assertEqual(myModel.indexOfLargestTicket(),2)
+        self.assertEqual(myContainer.indexOfLargestValue(),2)
+        self.assertEqual(myContainer._totalValue , 24)
 
 
-
+    @unittest.skip("skipped due to print")
+    def testStrRep(self):
+        values = [7, 1]
+        myContainer = OrderedContainer(values)
+        print()
+        print(myContainer)
 
 
 if __name__ == "__main__":

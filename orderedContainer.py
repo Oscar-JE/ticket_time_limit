@@ -10,16 +10,19 @@ class OrderedContainer():
     def __init__(self, values = []):
         self._values = []
         self._order = [] # order of the item according to > . largest at the end
+        self._totalValue = 0
         self.inputMany(values)
+
 
     def _inputOrder(self,value):
         index = self._findIndexOfValue(value)
         self._incrementIndexesAbove(index)
         self._order.insert(len(self._order) ,index)
 
-    def input(self,value):
+    def input(self,value): # skulle vilja ha en begränsning på att value ska vara större lika med 0
         self._inputOrder(value)
         self._values.append(value)
+        self._totalValue += value
 
     def inputMany(self, values):
         for value in values:
@@ -41,6 +44,21 @@ class OrderedContainer():
                 self._order[i] += 1
 
 
-    def indexOfLargestTicket(self):
+    def indexOfLargestValue(self):
         # dependent on the order of indexes
         return self._order[-1]
+
+    def orderRep(self):
+        orderRep = ""
+        for order in self._order:
+            orderRep += str(order) + " "
+        return orderRep
+
+    def valuesRep(self):
+        valuesRep = ""
+        for value in self._values:
+            valuesRep += str(value) + " "
+        return valuesRep
+
+    def __str__(self):
+        return "Order: " + self.orderRep() +"\n" + "Values: " + self.valuesRep()

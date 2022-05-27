@@ -1,18 +1,9 @@
-
-from ticket import Ticket
 import random
 
-def ticketWithValue(value):
-    retTicket = Ticket()
-    retTicket._buisinesValue= value
-    return retTicket
+from ticket import Ticket
+from ticket import ticketsCreate
+from orderedContainer import OrderedContainer
 
-
-def ticketsCreate(values):
-    tickets = []
-    for value in values:
-        tickets.append(ticketWithValue(value))
-    return tickets
 
 
 class Model(object):
@@ -22,15 +13,11 @@ class Model(object):
 
     def __init__(self,values = []):
         tickets = ticketsCreate(values)                                # their buisinesValue from lowest to highest
-        self.inputTickets(tickets)
+        self.orderedContainer = OrderedContainer(tickets)
 
     def __str__(self):
-        ticketsRep = "Tickets: "
-        orderRep = "Order: "
-        for ticket in self._tickets:
-            ticketsRep += str(ticket) + " "
-        for index in self._ticketIndex:
-            orderRep += str(index) + " "
+        ticketsRep = "Tickets: " + self.orderedContainer.valuesRep()
+        orderRep = "Order: " + self.orderedContainer.orderRep()
         return ticketsRep + "\n" + orderRep +"\n"
 
     def _generateNumberOfTicketsNextSprint(self):

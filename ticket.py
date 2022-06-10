@@ -2,6 +2,7 @@ import time
 import random
 
 def ticketWithValue(value):
+    assert value >= 0
     retTicket = Ticket()
     retTicket._buisinesValue= value
     return retTicket
@@ -21,6 +22,8 @@ class Ticket(object):
             self._buisinesValue = random.randrange(-10,10)
         else:
             self._buisinesValue = buisinesValue
+
+        self._creationTime = time() # behöver jag verkligen detta ?
 
     def __str__(self):
         return str(self._buisinesValue)

@@ -18,9 +18,19 @@ class TestBasicModel(unittest.TestCase):
     def testInputTickets(self):
         values = [3,2,10,9]
         myContainer = OrderedContainer(values)
-        self.assertEqual(myContainer.indexOfLargestValue(),2)
-        self.assertEqual(myContainer._totalValue , 24)
+        self.assertEqual(myContainer._indexOfLargestValue(),2)
 
+    def testPopLargest(self):
+        values = [1,3,2,4]
+        myContainer = OrderedContainer(values)
+        #print(myContainer)
+        poped1 = myContainer.popLargest()
+        poped2 = myContainer.popLargest()
+        poped3 = myContainer.popLargest()
+        #print(myContainer)
+        self.assertEqual(4, poped1)
+        self.assertEqual(3,poped2)
+        self.assertEqual(2,poped3)
 
     @unittest.skip("skipped due to print")
     def testStrRep(self):

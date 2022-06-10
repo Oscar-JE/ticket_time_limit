@@ -5,12 +5,13 @@ from ticket import Ticket
 
 class TestBasicModel(unittest.TestCase):
 
-    @unittest.skip("Skippad pga utskriften")
+    #@unittest.skip("Skippad pga utskriften")
     def testStrRep(self):
-        values = [3,-1]
+        values = [3, 1]
         myModel = Model(values)
         print()
         print(myModel)
+
 
 
 

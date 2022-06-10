@@ -10,8 +10,8 @@ class OrderedContainer():
     def __init__(self, values = []):
         self._values = []
         self._order = [] # order of the item according to > . largest at the end
-        self._totalValue = 0
         self.inputMany(values)
+
 
 
     def _inputOrder(self,value):
@@ -22,7 +22,6 @@ class OrderedContainer():
     def input(self,value): # skulle vilja ha en begränsning på att value ska vara större lika med 0
         self._inputOrder(value)
         self._values.append(value)
-        self._totalValue += value
 
     def inputMany(self, values):
         for value in values:
@@ -44,9 +43,24 @@ class OrderedContainer():
                 self._order[i] += 1
 
 
-    def indexOfLargestValue(self):
+    def _indexOfLargestValue(self):
         # dependent on the order of indexes
         return self._order[-1]
+
+    def _popIndexOfLargest(self):
+        return self._order.pop();
+
+    def _decrementIndexLarger(self,index):
+        for  i , indexIt in enumerate(self._order):
+            if indexIt >= index:
+                self._order[i] -= 1
+
+
+    def popLargest(self):
+        index = self._popIndexOfLargest()
+        self._decrementIndexLarger(index)
+        return self._values.pop(index)
+
 
     def orderRep(self):
         orderRep = ""

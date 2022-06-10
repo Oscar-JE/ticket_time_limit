@@ -5,7 +5,6 @@ from ticket import ticketsCreate
 from orderedContainer import OrderedContainer
 
 
-
 class Model(object):
     """docstring forBasic."""
     maximumSprintTickets = 15
@@ -21,7 +20,6 @@ class Model(object):
         return ticketsRep + "\n" + orderRep +"\n"
 
     def _generateNumberOfTicketsNextSprint(self):
-        # warning random not state check
         return random.randrange(maximumSprintTickets)
 
     def _generateTickets(n):
@@ -30,6 +28,15 @@ class Model(object):
             tickets.append(Ticket())
         return tickets
 
+    def chooseBestTicket(self):
+        return orderedContainer.popLargest()
+
+    def chosseTicket(self):
+        return self.chooseBestTicket()
+
+    def sprint(self):
+        ticketCompleted = self.chosseTicket()
+        newTickets = [] # fortsätt här nästa gång
 
     def calc(self):
         return 5

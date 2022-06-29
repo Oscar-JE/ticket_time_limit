@@ -37,5 +37,7 @@ class Model(object):
         ticketCompleted = self.chosseTicket()
         newTickets = [] # fortsätt här nästa gång
 
-    def calc(self):
-        return 5
+    def calc(self): # måste ta och skriva en vettig calc
+        choosenIndex = 5  # här behöver vi tänka till lite
+        valueList = [1,2,3,4,5] # kan vi får fram en funktion som gör detta smidigt?
+        return choosenIndex, valueList

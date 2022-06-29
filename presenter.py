@@ -10,8 +10,8 @@ class Presenter():
         self.view = View()
 
     def firstIteration(self):
-        result = self.model.calc()
-        self.view.visuilize(result)
+        chossenIndex, ticketValues = self.model.calc()
+        self.view.visuilize(chossenIndex, ticketValues)
 
 def main():
   myPresenter = Presenter()

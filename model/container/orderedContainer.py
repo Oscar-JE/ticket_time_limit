@@ -42,7 +42,6 @@ class OrderedContainer():
             if indexIt >= index:
                 self._order[i] += 1
 
-
     def _indexOfLargestValue(self):
         # dependent on the order of indexes
         return self._order[-1]
@@ -59,7 +58,7 @@ class OrderedContainer():
     def popLargest(self):
         index = self._popIndexOfLargest()
         self._decrementIndexLarger(index)
-        return self._values.pop(index)
+        return self._values.pop(index) , index
 
 
     def orderRep(self):

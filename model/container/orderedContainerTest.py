@@ -24,9 +24,9 @@ class TestBasicModel(unittest.TestCase):
         values = [1,3,2,4]
         myContainer = OrderedContainer(values)
         #print(myContainer)
-        poped1 = myContainer.popLargest()
-        poped2 = myContainer.popLargest()
-        poped3 = myContainer.popLargest()
+        poped1, _ = myContainer.popLargest()
+        poped2, _ = myContainer.popLargest()
+        poped3, _ = myContainer.popLargest()
         #print(myContainer)
         self.assertEqual(4, poped1)
         self.assertEqual(3,poped2)

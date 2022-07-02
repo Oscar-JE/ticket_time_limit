@@ -1,8 +1,11 @@
 import random
 
-from ticket.ticket import ticketsCreate
-from container.orderedContainer import OrderedContainer
-
+try: # trixad lösning för att kunna köra det varifrån jag vill
+    from .ticket.ticket import ticketsCreate
+    from .container.orderedContainer import OrderedContainer
+except:
+    from ticket.ticket import ticketsCreate
+    from container.orderedContainer import OrderedContainer
 
 class Model(object):
     """docstring forBasic."""
@@ -37,7 +40,11 @@ class Model(object):
         ticketCompleted = self.chosseTicket()
         newTickets = [] # fortsätt här nästa gång
 
+    def calc2(self):
+        valueList = self.convergeToValueList()
+        choosenIndex = self.chosseTicket()
+
     def calc(self): # måste ta och skriva en vettig calc
-        choosenIndex = 5  # här behöver vi tänka till lite
+        choosenIndex = 4  # här behöver vi tänka till lite
         valueList = [1,2,3,4,5] # kan vi får fram en funktion som gör detta smidigt?
         return choosenIndex, valueList

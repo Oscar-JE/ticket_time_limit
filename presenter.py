@@ -1,7 +1,7 @@
 # main class presenter
 
-from basicModel import Model
-from terminalView import View
+from model.basicModel import Model
+from view.terminalView import View
 
 class Presenter():
     """docstring for Presenter. responsible for coordinating model and view"""
@@ -11,7 +11,7 @@ class Presenter():
 
     def firstIteration(self):
         chossenIndex, ticketValues = self.model.calc()
-        self.view.visuilize(chossenIndex, ticketValues)
+        self.view.draw(chossenIndex, ticketValues)
 
 def main():
   myPresenter = Presenter()

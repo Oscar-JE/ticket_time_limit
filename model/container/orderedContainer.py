@@ -12,6 +12,10 @@ class OrderedContainer():
         self._order = [] # order of the item according to > . largest at the end
         self.inputMany(values)
 
+    def __len__(self):
+        length = len(self._values)
+        assert length == len(self._order)
+        return length
 
 
     def _inputOrder(self,value):
@@ -72,6 +76,13 @@ class OrderedContainer():
         for value in self._values:
             valuesRep += str(value) + " "
         return valuesRep
+
+    def asUnorderedList(self):
+        intList = []
+        for value in self._values:
+            intList.append(int(value))
+        return intList
+
 
     def __str__(self):
         return "Order: " + self.orderRep() +"\n" + "Values: " + self.valuesRep()

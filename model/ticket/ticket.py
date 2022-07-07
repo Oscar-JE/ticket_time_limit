@@ -28,6 +28,9 @@ class Ticket(object):
     def __str__(self):
         return str(self._buisinesValue)
 
+    def __int__(self):
+        return self._buisinesValue
+
     def value(self):
         return _buisinesValue
 

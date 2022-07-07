@@ -13,6 +13,7 @@ class View(object,):
         print(result)
 
     def choosenIndexRow(self, index):
+        assert type(index) == int
         str = " "
         for i in range(index):
             str += "   " # kommer bero på antaket siffror i resultatet kan vara ok för nu

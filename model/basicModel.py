@@ -7,6 +7,7 @@ except:
     from ticket.ticket import ticketsCreate
     from container.orderedContainer import OrderedContainer
 
+
 class Model(object):
     """docstring forBasic."""
     maximumSprintTickets = 15
@@ -30,21 +31,34 @@ class Model(object):
             tickets.append(Ticket())
         return tickets
 
-    def chooseBestTicket(self):
-        return orderedContainer.popLargest()
+    def _appendTicket(ticket):
+        pass
 
-    def chosseTicket(self):
-        return self.chooseBestTicket()
+    def prepateNextGeneration(self):
+        pass
+
+    def pluckBestTicket(self):
+        ticket , ticketIndex = self.orderedContainer.popLargest()
+        return ticket , ticketIndex
+
+    def pluckTicket(self):
+        return self.pluckBestTicket()
 
     def sprint(self):
-        ticketCompleted = self.chosseTicket()
+        ticketCompleted, _ = self.pluckTicket()
         newTickets = [] # fortsätt här nästa gång
 
-    def calc2(self):
-        valueList = self.convergeToValueList()
-        choosenIndex = self.chosseTicket()
+    def convertToValueList(self):
+        return self.orderedContainer.asUnorderedList() # ska returnera returen från ordered container
 
-    def calc(self): # måste ta och skriva en vettig calc
-        choosenIndex = 4  # här behöver vi tänka till lite
-        valueList = [1,2,3,4,5] # kan vi får fram en funktion som gör detta smidigt?
-        return choosenIndex, valueList
+
+    def endCondition(self):
+        return not len(self.orderedContainer)>0
+
+    def calc(self):
+        valueList = []
+        choosenIndex = -1
+        if (len(self.orderedContainer)):
+            valueList = self.convertToValueList()
+            _ , choosenIndex = self.pluckTicket()
+        return  choosenIndex ,  valueList

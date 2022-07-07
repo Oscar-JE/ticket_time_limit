@@ -10,6 +10,10 @@ class TestTicket(unittest.TestCase):
         assert myTicket <= larger
         assert larger > myTicket
 
+    def test_conversion_to_int(self):
+        myTicket = Ticket(10)
+        assert int(myTicket) == 10
+
 
 if __name__ == "__main__":
     unittest.main()

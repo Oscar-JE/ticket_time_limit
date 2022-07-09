@@ -2,9 +2,11 @@ import random
 
 try: # trixad lösning för att kunna köra det varifrån jag vill
     from .ticket.ticket import ticketsCreate
+    from .ticket.ticket import Ticket
     from .container.orderedContainer import OrderedContainer
 except:
     from ticket.ticket import ticketsCreate
+    from ticket.ticket import Ticket
     from container.orderedContainer import OrderedContainer
 
 
@@ -23,19 +25,19 @@ class Model(object):
         return ticketsRep + "\n" + orderRep +"\n"
 
     def _generateNumberOfTicketsNextSprint(self):
-        return random.randrange(maximumSprintTickets)
+        return random.randrange(Model.maximumSprintTickets)
 
-    def _generateTickets(n):
+    def _generateTickets(self,n):
         tickets = []
-        for i in ragne(n):
+        for i in range(n):
             tickets.append(Ticket())
         return tickets
 
-    def _appendTicket(ticket):
-        pass
-
     def prepateNextGeneration(self):
-        pass
+        nrNextGen = self._generateNumberOfTicketsNextSprint()
+        nextGenTickets = self._generateTickets(nrNextGen)
+        for ticket in nextGenTickets:
+            self.orderedContainer.input(ticket)
 
     def pluckBestTicket(self):
         ticket , ticketIndex = self.orderedContainer.popLargest()

@@ -20,7 +20,7 @@ class Presenter():
             self.view.draw(chossenIndex, ticketValues)
             if(self.model.endCondition()):
                 break
-            self.model.
+            self.model.prepateNextGeneration()
 
 def main():
   myPresenter = Presenter()

@@ -22,8 +22,6 @@ class View(object,):
         print(str)
 
     def draw(self, choosenIndex, result):
-        rows = os.get_terminal_size()[1]
-        for i in range(rows-2):
-            print()
+        print("---- restult ----")
         self.choosenIndexRow(choosenIndex)
         self.visuilize(result)

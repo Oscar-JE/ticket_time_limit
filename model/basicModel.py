@@ -1,19 +1,20 @@
-import random
 
 try: # trixad lösning för att kunna köra det varifrån jag vill
     from .ticket.ticket import ticketsCreate
     from .ticket.ticket import Ticket
     from .container.orderedContainer import OrderedContainer
+    from .randomDraws import *
 except:
     from ticket.ticket import ticketsCreate
     from ticket.ticket import Ticket
     from container.orderedContainer import OrderedContainer
-
+    import randomDraws
 
 class Model(object):
     """docstring forBasic."""
     maximumSprintTickets = 15
     teamsTicketCapacity = 6
+    maximumNewTicketEachSprint = 3
 
     def __init__(self,values = []):
         tickets = ticketsCreate(values)                                # their buisinesValue from lowest to highest
@@ -25,7 +26,7 @@ class Model(object):
         return ticketsRep + "\n" + orderRep +"\n"
 
     def _generateNumberOfTicketsNextSprint(self):
-        return random.randrange(Model.maximumSprintTickets)
+        return uniformDistribution(Model.maximumNewTicketEachSprint)
 
     def _generateTickets(self,n):
         tickets = []

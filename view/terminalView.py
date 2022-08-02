@@ -12,16 +12,17 @@ class View(object,):
     def visuilize(self,result): # ska bytas ut
         print(result)
 
-    def choosenIndexRow(self, index):
+    def choosenIndexRow(self, index , result):
         assert type(index) == int
         str = " "
         for i in range(index):
-            str += "   " # kommer bero på antaket siffror i resultatet kan vara ok för nu
+            str += "   "
+            str += (result[index]<0)* " "
         marker = "v"
         str += marker
         print(str)
 
     def draw(self, choosenIndex, result):
         print("---- restult ----")
-        self.choosenIndexRow(choosenIndex)
+        self.choosenIndexRow(choosenIndex,result)
         self.visuilize(result)

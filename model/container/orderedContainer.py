@@ -23,7 +23,7 @@ class OrderedContainer():
         self._incrementIndexesAbove(index)
         self._order.insert(len(self._order) ,index)
 
-    def input(self,value): # skulle vilja ha en begränsning på att value ska vara större lika med 0
+    def input(self,value):
         self._inputOrder(value)
         self._values.append(value)
 

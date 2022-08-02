@@ -7,12 +7,8 @@ class Presenter():
     """docstring for Presenter. responsible for coordinating model and view"""
     def __init__(self):
 
-        self.model = Model([2,2,2,2,2])
+        self.model = Model([9,9,9,9,9])
         self.view = View()
-
-    def firstIteration(self):
-        chossenIndex, ticketValues = self.model.calc()
-        self.view.draw(chossenIndex, ticketValues)
 
     def present(self):
         while True:

@@ -1,10 +1,11 @@
 # terminal view
-import os
-
-def clearConsole():
-    rows = os.get_terminal_size()[1]
-    for i in range(rows-2):
-        print()
+def spacingOfIntInteger(integerToSpace):
+    stringRep = str(integerToSpace)
+    length = len(stringRep)
+    spacing = ""
+    for i in range(length):
+        spacing += " "
+    return spacing
 
 class View(object,):
     """ Assumes that the value is sigle diget at the moment"""
@@ -14,10 +15,12 @@ class View(object,):
 
     def choosenIndexRow(self, index , result):
         assert type(index) == int
-        str = " "
+        str = " " # initial [
         for i in range(index):
-            str += "   "
-            str += (result[index]<0)* " "
+            str += spacingOfIntInteger(result[i])
+            str+= " "*2 #, and spave
+        if (result[index]<0):
+            str += " "
         marker = "v"
         str += marker
         print(str)

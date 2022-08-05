@@ -8,14 +8,19 @@ class TestTicket(unittest.TestCase):
         my_view = View()
         print(my_view)
 
-    def test_clearConsole(self):
-        print("clearConsole first line -----------------------")
-        terminalView.clearConsole()
-        print("second line ----------------------")
+    def compareTerminalLength(self,first,second):
+        print("#"+first+"#")
+        print("#"+second+"#")
+
+    def test_VisuelInspectionAvSpacing(self):
+        testNr1 = 100
+        testNr2 = -320
+        self.compareTerminalLength(str(testNr1), terminalView.spacingOfIntInteger(testNr1))
+        self.compareTerminalLength(str(testNr2),terminalView.spacingOfIntInteger(testNr2))
 
     def test_draw(self):
-        result = [1,2,3,4]
-        choosenIndex = 1
+        result = [1,-2,3,4]
+        choosenIndex = 2
         my_view = View()
         my_view.draw(choosenIndex,result)
 

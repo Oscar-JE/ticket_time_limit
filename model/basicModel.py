@@ -58,7 +58,7 @@ class Model(object):
     def endCondition(self):
         return not len(self.orderedContainer)>0
 
-    def calc(self):
+    def calc(self): # tror att denna inte beteer sig såsom jag tror
         valueList = []
         choosenIndex = -1
         if (len(self.orderedContainer)):

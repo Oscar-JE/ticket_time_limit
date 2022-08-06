@@ -4,16 +4,10 @@ from orderedContainer import OrderedContainer
 
 class TestBasicModel(unittest.TestCase):
 
-    def testInputIndex(self):
-        values = [3,-1]
-        myContainer = OrderedContainer(values)
-        index = myContainer._findIndexOfValue(2)
-        self.assertEqual(index, 1)
-
     def testInputOrder(self):
         values = [1,0,-3]
         myContainer = OrderedContainer(values)
-        self.assertEqual(myContainer._order, [2,1,0])
+        self.assertEqual(myContainer._orderedIndices, [2,1,0])
 
     def testInputTickets(self):
         values = [3,2,10,9]
@@ -23,14 +17,21 @@ class TestBasicModel(unittest.TestCase):
     def testPopLargest(self):
         values = [1,3,2,4]
         myContainer = OrderedContainer(values)
-        #print(myContainer)
         poped1, _ = myContainer.popLargest()
         poped2, _ = myContainer.popLargest()
         poped3, _ = myContainer.popLargest()
-        #print(myContainer)
         self.assertEqual(4, poped1)
         self.assertEqual(3,poped2)
         self.assertEqual(2,poped3)
+
+    def testPopLargest(self):
+        values = [0,1,2,3,50,4,5,6,7]
+        myContainer = OrderedContainer(values)
+        print(myContainer)
+        value , index = myContainer.popLargest()
+        self.assertEqual(value , 50)
+        self.assertEqual(index, 4)
+
 
     @unittest.skip("skipped due to print")
     def testStrRep(self):

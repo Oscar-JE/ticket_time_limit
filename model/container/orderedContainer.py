@@ -9,7 +9,7 @@ class OrderedContainer():
 
     def __init__(self, values = []):
         self._values = []
-        self._order = [] # order of the item according to > . largest at the end
+        self._orderedIndices = [] # order of the item according to > . largest at the end
         self.inputMany(values)
 
     def __len__(self):
@@ -17,57 +17,56 @@ class OrderedContainer():
         assert length == len(self._order)
         return length
 
-
-    def _inputOrder(self,value):
-        index = self._findIndexOfValue(value)
-        self._incrementIndexesAbove(index)
-        self._order.insert(len(self._order) ,index)
+    def inputMany(self, values):
+        for value in values:
+            self.input(value)
 
     def input(self,value):
         self._inputOrder(value)
         self._values.append(value)
 
-    def inputMany(self, values):
-        for value in values:
-            self.input(value)
+    def _inputOrder(self,value):
+        positionInSizeOrder = self._findNrOfSmaler(value)
+        #print("--- in _inputOrder ---")
+        #print("printar sig själv")
+        #print(self)
+        #print("positionInSizeOrder = " + str(positionInSizeOrder))
+        #print("len(self._orderedIndices) = " + str(len(self._orderedIndices)))
+        self._orderedIndices.insert(positionInSizeOrder, len(self._orderedIndices))
 
-    # fortsätter här senare
-    def _findIndexOfValue(self,value):
+    def _findNrOfSmaler(self,value): # den här lägger vi in lite test för
         nr_of_values_smaler = 0
-        for index in self._order:
-            if self._values[index] > value : # controlls the order
-                break
-            else:
-                nr_of_values_smaler+=1
+        for val in self._values:
+            if (val < value):
+                nr_of_values_smaler += 1 # optimerar senare istället
         return nr_of_values_smaler
 
     def _incrementIndexesAbove(self,index):
-        for  i , indexIt in enumerate(self._order):
+        for  i , indexIt in enumerate(self._orderedIndices):
             if indexIt >= index:
                 self._order[i] += 1
 
-    def _indexOfLargestValue(self):
+    def _indexOfLargestValue(self): # den är helt fel men den bordde vara rätt
         # dependent on the order of indexes
-        return self._order[-1]
+        return self._orderedIndices[-1]
 
     def _popIndexOfLargest(self):
-        return self._order.pop();
+        return self._orderedIndices.pop();
 
     def _decrementIndexLarger(self,index):
-        for  i , indexIt in enumerate(self._order):
+        for  i , indexIt in enumerate(self._orderedIndices):
             if indexIt >= index:
                 self._order[i] -= 1
 
-
-    def popLargest(self):
+    def popLargest(self): # här sker det konstigheter
         index = self._popIndexOfLargest()
-        self._decrementIndexLarger(index)
-        return self._values.pop(index) , index
+        value = self._values.pop(index)
+        return value , index
 
 
     def orderRep(self):
         orderRep = ""
-        for order in self._order:
+        for order in self._orderedIndices:
             orderRep += str(order) + " "
         return orderRep
 
@@ -85,4 +84,4 @@ class OrderedContainer():
 
 
     def __str__(self):
-        return "Order: " + self.orderRep() +"\n" + "Values: " + self.valuesRep()
+        return "OrderIndices : " + self.orderRep() +"\n" + "Values: " + self.valuesRep()

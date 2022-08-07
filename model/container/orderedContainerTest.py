@@ -31,6 +31,7 @@ class TestBasicModel(unittest.TestCase):
         value , index = myContainer.popLargest()
         self.assertEqual(value , 50)
         self.assertEqual(index, 4)
+        print(myContainer)
 
 
     @unittest.skip("skipped due to print")

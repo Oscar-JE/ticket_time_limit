@@ -56,13 +56,13 @@ class OrderedContainer():
     def _decrementIndexLarger(self,index):
         for  i , indexIt in enumerate(self._orderedIndices):
             if indexIt >= index:
-                self._order[i] -= 1
+                self._orderedIndices[i] -= 1
 
-    def popLargest(self): # här sker det konstigheter
+    def popLargest(self):
         index = self._popIndexOfLargest()
         value = self._values.pop(index)
+        self._decrementIndexLarger(index)
         return value , index
-
 
     def orderRep(self):
         orderRep = ""

@@ -11,7 +11,14 @@ class TestBasicModel(unittest.TestCase):
         print()
         print(myModel)
 
-
+    def test_Calc(self):
+        values = [1,2,3,4,50,6,7,8,9]
+        myModel = Model(values)
+        print("testar ordning och stuff")
+        print(myModel)
+        index , _ = myModel.calc()
+        print("index = " + str(index))
+        assert index == 4
 
 
 

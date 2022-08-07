@@ -22,7 +22,7 @@ class Model(object):
 
     def __str__(self):
         ticketsRep = "Tickets: " + self.orderedContainer.valuesRep()
-        orderRep = "Order: " + self.orderedContainer.orderRep()
+        orderRep =   "Order  : " + self.orderedContainer.orderRep()
         return ticketsRep + "\n" + orderRep +"\n"
 
     def _generateNumberOfTicketsNextSprint(self):
@@ -47,16 +47,8 @@ class Model(object):
     def pluckTicket(self):
         return self.pluckBestTicket()
 
-    def sprint(self):
-        ticketCompleted, _ = self.pluckTicket()
-        newTickets = [] # fortsätt här nästa gång
-
     def convertToValueList(self):
         return self.orderedContainer.asUnorderedList() # ska returnera returen från ordered container
-
-
-    def endCondition(self):
-        return not len(self.orderedContainer)>0
 
     def calc(self): # tror att denna inte beteer sig såsom jag tror
         valueList = []
@@ -65,3 +57,12 @@ class Model(object):
             valueList = self.convertToValueList()
             _ , choosenIndex = self.pluckTicket()
         return  choosenIndex ,  valueList
+
+
+    def endCondition(self):
+        return not len(self.orderedContainer)>0
+
+
+    def sprint(self):
+        ticketCompleted, _ = self.pluckTicket()
+        newTickets = [] # fortsätt här nästa gång

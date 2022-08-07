@@ -14,7 +14,7 @@ class OrderedContainer():
 
     def __len__(self):
         length = len(self._values)
-        assert length == len(self._order)
+        assert length == len(self._orderedIndices)
         return length
 
     def inputMany(self, values):

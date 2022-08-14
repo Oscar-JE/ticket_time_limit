@@ -14,16 +14,17 @@ class View(object,):
         print(result)
 
     def choosenIndexRow(self, index , result):
-        assert type(index) == int
-        str = " " # initial [
-        for i in range(index):
-            str += spacingOfIntInteger(result[i])
-            str+= " "*2 #, and spave
-        if (result[index]<0):
-            str += " "
-        marker = "v"
-        str += marker
-        print(str)
+        if len(result)>0:
+            assert type(index) == int
+            str = " " # initial [
+            for i in range(index):
+                str += spacingOfIntInteger(result[i])
+                str+= " "*2 #, and spave
+            if (result[index]<0):
+                str += " "
+            marker = "v"
+            str += marker
+            print(str)
 
     def draw(self, choosenIndex, result):
         print("---- restult ----")

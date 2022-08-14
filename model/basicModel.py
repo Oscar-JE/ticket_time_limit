@@ -19,6 +19,8 @@ class Model(object):
     def __init__(self,values = []):
         tickets = ticketsCreate(values)                                # their buisinesValue from lowest to highest
         self.orderedContainer = OrderedContainer(tickets)
+        self.nrEpocks = 0
+        self.completedValue = 0
 
     def __str__(self):
         ticketsRep = "Tickets: " + self.orderedContainer.valuesRep()
@@ -55,13 +57,20 @@ class Model(object):
         choosenIndex = -1
         if (len(self.orderedContainer)):
             valueList = self.convertToValueList()
-            _ , choosenIndex = self.pluckTicket()
+            ticket , choosenIndex = self.pluckTicket()
+
         return  choosenIndex ,  valueList
 
 
     def endCondition(self):
+        return self.numberOfEpocks()
+
+    def endOfTickets(self):
         return not len(self.orderedContainer)>0
 
+    def numberOfEpocks(self):
+        self.nrEpocks += 1
+        return self.nrEpocks>= 150
 
     def sprint(self):
         ticketCompleted, _ = self.pluckTicket()

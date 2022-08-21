@@ -8,7 +8,7 @@ except:
     from ticket.ticket import ticketsCreate
     from ticket.ticket import Ticket
     from container.orderedContainer import OrderedContainer
-    import randomDraws
+    from .randomDraws import *
 
 class Model(object):
     """docstring forBasic."""
@@ -28,7 +28,7 @@ class Model(object):
         return ticketsRep + "\n" + orderRep +"\n"
 
     def _generateNumberOfTicketsNextSprint(self):
-        return uniformDistribution(Model.maximumNewTicketEachSprint)
+        return uniform(Model.maximumNewTicketEachSprint)
 
     def _generateTickets(self,n):
         tickets = []
@@ -46,8 +46,14 @@ class Model(object):
         ticket , ticketIndex = self.orderedContainer.popLargest()
         return ticket , ticketIndex
 
+    def pluckRandndom(self):
+        length = len(self.orderedContainer)
+        index = uniform(length)
+        return self.orderedContainer.pop(index) , index
+
     def pluckTicket(self):
-        return self.pluckBestTicket()
+        #return self.pluckBestTicket()
+        return self.pluckRandndom()
 
     def convertToValueList(self):
         return self.orderedContainer.asUnorderedList() # ska returnera returen från ordered container

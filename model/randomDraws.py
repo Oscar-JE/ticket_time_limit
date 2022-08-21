@@ -1,7 +1,4 @@
 import random
 
-def uniformDistribution(maximum):
+def uniform(maximum):
     return random.randrange(maximum)
-
-
-# bör lägga till dragning från geometrix fördelnin (minesslös diskret fördelning)

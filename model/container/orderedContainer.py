@@ -60,9 +60,14 @@ class OrderedContainer():
 
     def popLargest(self):
         index = self._popIndexOfLargest()
-        value = self._values.pop(index)
-        self._decrementIndexLarger(index)
+        value = self.pop(index)
         return value , index
+
+    def pop(self,index):
+        value = self._values.pop(index)
+        _ = self._orderedIndices.pop(index)
+        self._decrementIndexLarger(index)
+        return value
 
     def orderRep(self):
         orderRep = ""

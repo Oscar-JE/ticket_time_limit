@@ -24,6 +24,13 @@ class TestBasicModel(unittest.TestCase):
         self.assertEqual(3,poped2)
         self.assertEqual(2,poped3)
 
+    def testPop(self):
+        values = [0,1,2,3,4,5,6,7]
+        myContainer = OrderedContainer(values)
+        value = myContainer.pop(2)
+        self.assertEqual(value,2)
+        self.assertEqual(myContainer._values[2],3)
+
     def testPopLargest(self):
         values = [0,1,2,3,50,4,5,6,7]
         myContainer = OrderedContainer(values)

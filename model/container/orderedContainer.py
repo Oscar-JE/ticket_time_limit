@@ -63,7 +63,7 @@ class OrderedContainer():
         value = self.pop(index)
         return value , index
 
-    def pop(self,index):
+    def pop(self,index=0):
         value = self._values.pop(index)
         _ = self._orderedIndices.pop(index)
         self._decrementIndexLarger(index)

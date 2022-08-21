@@ -12,9 +12,8 @@ except:
 
 class Model(object):
     """docstring forBasic."""
-    maximumSprintTickets = 15
-    teamsTicketCapacity = 6
-    maximumNewTicketEachSprint = 3
+    maxbacklogLength = 5
+    maximumNewTicketEachSprint = 10
 
     def __init__(self,values = []):
         tickets = ticketsCreate(values)                                # their buisinesValue from lowest to highest
@@ -41,6 +40,8 @@ class Model(object):
         nextGenTickets = self._generateTickets(nrNextGen)
         for ticket in nextGenTickets:
             self.orderedContainer.input(ticket)
+            if (len(self.orderedContainer)>self.maxbacklogLength):
+                self.orderedContainer.pop()
 
     def pluckBestTicket(self):
         ticket , ticketIndex = self.orderedContainer.popLargest()

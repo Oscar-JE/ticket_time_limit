@@ -1,0 +1,5 @@
+In this project we want the following;
+  randomly generated tickets (business value)[done]
+  Atleast two tackticks for choosing tickets to complete (for sake of realism also containing some random elements)[]
+  changable maximum number of tickets in the backlog
+  logging and visualization of the results

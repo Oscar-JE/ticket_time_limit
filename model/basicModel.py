@@ -18,7 +18,7 @@ class Model(object):
     def __init__(self,values = []):
         tickets = ticketsCreate(values)                                # their buisinesValue from lowest to highest
         self.orderedContainer = OrderedContainer(tickets)
-        self.nrEpocks = 0
+        self.currentIteration = 0
         self.completedValue = 0
 
     def __str__(self):
@@ -68,17 +68,9 @@ class Model(object):
 
         return  choosenIndex ,  valueList
 
-
     def endCondition(self):
-        return self.numberOfEpocks()
+        return self.nrIterations()
 
-    def endOfTickets(self):
-        return not len(self.orderedContainer)>0
-
-    def numberOfEpocks(self):
-        self.nrEpocks += 1
-        return self.nrEpocks>= 150
-
-    def sprint(self):
-        ticketCompleted, _ = self.pluckTicket()
-        newTickets = [] # fortsätt här nästa gång
+    def nrIterations(self):
+        self.currentIteration += 1
+        return self.currentIteration>= 150

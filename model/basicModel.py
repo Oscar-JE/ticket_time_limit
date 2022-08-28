@@ -21,6 +21,9 @@ class Model(object):
         self.currentIteration = 0
         self.completedValue = 0
 
+    def getBuissenesValue(self):
+        return self.completedValue
+
     def __str__(self):
         ticketsRep = "Tickets: " + self.orderedContainer.valuesRep()
         orderRep =   "Order  : " + self.orderedContainer.orderRep()
@@ -53,18 +56,19 @@ class Model(object):
         return self.orderedContainer.pop(index) , index
 
     def pluckTicket(self):
-        #return self.pluckBestTicket()
-        return self.pluckRandndom()
+        return self.pluckBestTicket()
+        #return self.pluckRandndom()
 
     def convertToValueList(self):
         return self.orderedContainer.asUnorderedList() # ska returnera returen från ordered container
 
-    def calc(self): # tror att denna inte beteer sig såsom jag tror
+    def calc(self):
         valueList = []
         choosenIndex = -1
         if (len(self.orderedContainer)):
             valueList = self.convertToValueList()
             ticket , choosenIndex = self.pluckTicket()
+            self.completedValue += ticket.value()
 
         return  choosenIndex ,  valueList
 

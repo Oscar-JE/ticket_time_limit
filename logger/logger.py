@@ -23,7 +23,7 @@ class SingleLogger(object):
         self._meanValue = 0
         self._nrSampled = 0
 
-    def update(self, value):
+    def log(self, value):
         self._meanValue = (self._meanValue * self._nrSampled + value) / (self._nrSampled + 1)
         self._nrSampled += 1
 

@@ -27,11 +27,6 @@ class OrderedContainer():
 
     def _inputOrder(self,value):
         positionInSizeOrder = self._findNrOfSmaler(value)
-        #print("--- in _inputOrder ---")
-        #print("printar sig själv")
-        #print(self)
-        #print("positionInSizeOrder = " + str(positionInSizeOrder))
-        #print("len(self._orderedIndices) = " + str(len(self._orderedIndices)))
         self._orderedIndices.insert(positionInSizeOrder, len(self._orderedIndices))
 
     def _findNrOfSmaler(self,value): # den här lägger vi in lite test för
@@ -50,8 +45,8 @@ class OrderedContainer():
         # dependent on the order of indexes
         return self._orderedIndices[-1]
 
-    def _popIndexOfLargest(self):
-        return self._orderedIndices.pop();
+    def _getIndexOfLargest(self):
+        return self._orderedIndices[-1];
 
     def _decrementIndexLarger(self,index):
         for  i , indexIt in enumerate(self._orderedIndices):
@@ -59,8 +54,9 @@ class OrderedContainer():
                 self._orderedIndices[i] -= 1
 
     def popLargest(self):
-        index = self._popIndexOfLargest()
+        index = self._getIndexOfLargest()
         value = self.pop(index)
+        assert len(self._values) == len(self._orderedIndices)
         return value , index
 
     def pop(self,index=0):

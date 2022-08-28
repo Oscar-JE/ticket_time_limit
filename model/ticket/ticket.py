@@ -18,21 +18,19 @@ def ticketsCreate(values):
 class Ticket(object):
     """ main data class """
     def __init__(self,buisinesValue=None):
-        if buisinesValue is None:
+        self._buisinesValue = buisinesValue
+        if self._buisinesValue is None:
             self._buisinesValue = random.randrange(-10,10)
-        else:
-            self._buisinesValue = buisinesValue
-
         self._creationTime = time.time() # behöver jag verkligen detta ?
 
     def __str__(self):
         return str(self._buisinesValue)
 
-    def __int__(self):
+    def __int__(self): # Notera ; konvertering till int inte init
         return self._buisinesValue
 
     def value(self):
-        return _buisinesValue
+        return self._buisinesValue
 
     def time(self):
         return _creationTime
